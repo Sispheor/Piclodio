@@ -48,4 +48,4 @@ Give privilege to Apache on the folder
 sudo chown -R www-data:www-data /var/www/piclodio
 ```
 
-You can now use the app in your web broswer http://<raspPi_IP>/piclodio
+You can now use the app in your web broswer http://raspPi_IP/piclodio
