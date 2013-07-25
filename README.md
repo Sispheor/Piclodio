@@ -6,7 +6,7 @@ Raspberry Pi Web Clock Rado Web Server app
 Server side application.
 More informations here => http://mespotesgeek.fr/?p=267
 
-![My image](https://github.com/Sispheor/Piclodio/blob/master/img/piclodio_android.png)
+![alt tag](https://raw.github.com/Sispheor/Piclodio/blob/master/img/piclodio_android.png)
 
 
 Installation
