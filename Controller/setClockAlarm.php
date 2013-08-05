@@ -27,6 +27,10 @@ switch ($action){
          case "pls":
              $cron.= "sudo mplayer -playlist ". $url; 
              break;
+         default :
+             $cron.= "sudo mplayer ". $url;
+             break;
+             
         }
 
         echo CrontabManager::setClockAlarm($heure, $minute,$cron);
