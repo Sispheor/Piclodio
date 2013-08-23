@@ -103,10 +103,10 @@ function updateTimer(){
     $.ajax({
     type: 'POST',
     url: 'Controller/datetime.php',
-    timeout: 1000,
+    timeout: 10000,
     success: function(data) {
        $("#timer").html(data); 
-       window.setTimeout(updateTimer(), 1000);
+      // window.setTimeout(updateTimer(), 100000);
     }
    });
   
