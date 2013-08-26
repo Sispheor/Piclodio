@@ -81,7 +81,7 @@
                 <ul data-role="listview" data-inset="true" data-divider-theme="d">
                     <li data-role="list-divider">Heure Raspberry</li>
                     <li>
-                        <h3 style="text-align: center"><div id="timer"> </div></h3>
+                        <h3 style="text-align: center" ><div id="timer" onClick="updateTimer();"> </div></h3>
                     </li>
                 </ul>
              </div> 
