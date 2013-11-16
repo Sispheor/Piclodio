@@ -16,7 +16,7 @@ class URLmanager {
     public static function save($webRadio){
         $filename="../webRadios.json";
 	$webRadios = json_decode(file_get_contents($filename),true);
-	$webRadios[$webRadio["nom"]] = array("url" => $webRadio["url"]);
+	$webRadios[$webRadio["nom"]] = array("url" => $webRadio["url"], "nom" => $webRadio["nom"]);
         if(file_put_contents($filename, json_encode($webRadios))){
             return 1;
         }else{
@@ -32,11 +32,7 @@ class URLmanager {
         // ouverture du fichier
         if (file_exists($filename)) { 
             $datain = json_decode(file_get_contents($filename),true);
-	    foreach($datain as $name => $data){
-		$webradio = array ("nom" => $name, "url" => $data['url']);
-		$tabWebRadio[]=$webradio;
-		}
-            return $tabWebRadio;
+            return $datain;
         }else{
             //creation du fichier
             $fp = fopen($filename,"w");  
@@ -93,7 +89,7 @@ class URLmanager {
         //rez du fichier
         self::rezWebRadioFile();
 	
-	unset($tabWebradio[$nom]);
+	unset($tabWebRadio[$nom]);
         $filename="../webRadios.json";
         if(file_put_contents($filename, json_encode($tabWebRadio))){
             return 1;
@@ -103,7 +99,7 @@ class URLmanager {
     }
     
     public static function rezWebRadioFile(){
-        $filename="../webRadio.txt";
+        $filename="../webRadios.json";
         $fp = fopen($filename,"w");  
         fwrite($fp,"");  
         fclose($fp);

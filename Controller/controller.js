@@ -89,11 +89,8 @@ function refreshListWebRadio(){
     $("#listViewWebRadio li").remove();
    var tabWebRadio= getListWebRadio();
    // ajout de chaque objet dans la vue
-   for(var i= 0; i < tabWebRadio.length; i++){
-       $("#listViewWebRadio").append("<li><a onClick=\"setRadioActive('"+tabWebRadio[i].nom+"')\"><h2>"+tabWebRadio[i].nom+"</h2>\
-                 <a onClick=\"deleteWebRadio("+tabWebRadio[i].nom+")\" data-rel=\"popup\" data-position-to=\"window\" data-transition=\"pop\">Supprimer</a>\
-             </li>\
-       ");
+   for(var key in tabWebRadio){
+       $("#listViewWebRadio").append("<li><a onClick=\"setRadioActive('"+key+"')\"></h2>"+key+"</h2></a><a onClick=\"deleteWebRadio('"+key+"')\" data-rel=\"popup\" data-position-to=\"window\" data-transition=\"pop\">Supprimer</a></li>");
    }   
    // rafraichissement de la liste
    $("#listViewWebRadio").listview("refresh");
