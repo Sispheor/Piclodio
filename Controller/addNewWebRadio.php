@@ -8,7 +8,7 @@ $nom=   $_POST["nom"];
 //$nom=   "blabla";
 
 // creation de la webRadio
-$webradio = new WebRadio($nom, $url);
+$webradio = array("nom" => $nom, "url" => $url);
 // sauvegarde
 echo URLmanager::save($webradio);
 

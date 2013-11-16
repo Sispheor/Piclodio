@@ -46,18 +46,25 @@ class CrontabManager {
             $minute=0;
             $heure=0;
             $action="off";
+	    $url="off";
+            $nom="off";
 
         }else{
             $explode_out=explode(" ", $crontab);
+	    $total_token=count($explode_out);
             $minute= $explode_out[0];
             $heure= $explode_out[1];
             $action="on";
+	    $url = $explode_out[$total_token-2];
+	    $nom = substr($explode_out[$total_token-1],1);
         }
 
         $tab_return=array(
                 "minute"    => $minute,
                 "heure"     => $heure,
                 "action"    => $action,
+		"url" => $url,
+		"nom" => $nom,
             );
         return $tab_return;
     }

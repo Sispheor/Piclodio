@@ -25,13 +25,15 @@ switch ($action){
              $cron.= "sudo mplayer ". $url;
              break;
          case "pls":
+	 case "asx":
              $cron.= "sudo mplayer -playlist ". $url; 
              break;
          default :
              $cron.= "sudo mplayer ". $url;
              break;
-             
         }
+	
+	$cron.= ' #'.$webRadio["nom"];
 
         echo CrontabManager::setClockAlarm($heure, $minute,$cron);
      break;
