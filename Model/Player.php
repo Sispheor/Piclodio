@@ -9,6 +9,7 @@ class Player {
      * Lance l'URL active
      */
     public static function play($url){
+	exec("sudo /usr/bin/killall mplayer");
         // comande de lecture
         $cmd="sudo mplayer $url";
         // lancement de la lecture si pas déja lancé
