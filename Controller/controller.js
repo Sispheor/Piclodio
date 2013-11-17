@@ -161,6 +161,11 @@ function initIndexPage(){
    });
    
    // etat du reveil
+  refreshClockStatus(); 
+}
+
+function refreshClockStatus(){
+
    $.ajax({
         type: 'POST',
         url: 'Controller/getClockStatus.php',
@@ -180,12 +185,11 @@ function initIndexPage(){
            myselect[0].selectedIndex = tab.minute;
            myselect.selectmenu("refresh"); 
 
-           $("#radiocron").html(tab.nom+"("+tab.url+")");
+           $("#radiocron").html(tab.nom+"<br>"+tab.url);
 	   
            
         }
    });
-   
 }
 
 function addNewRadio(){
@@ -227,8 +231,12 @@ function ActionSelectClock(objet){
         data:'heure='+heure+'&minute='+minute+'&action='+action,
         success: function(msg) {
            message(msg);
+	
+   refreshClockStatus();
         }
    });
+
+   
     
 }
 

@@ -46,8 +46,8 @@ class CrontabManager {
             $minute=0;
             $heure=0;
             $action="off";
-	    $url="off";
-            $nom="off";
+	    $url="";
+            $nom="";
 
         }else{
             $explode_out=explode(" ", $crontab);
