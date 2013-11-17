@@ -60,6 +60,9 @@
                             </select>
                        </fieldset> 
                     </li>
+		    <li>
+ <h3 style="text-align: center" ><div id="radiocron">Off</div></h3>
+</li>
                 </ul>
 
                 <ul data-role="listview" data-inset="true" data-divider-theme="d">

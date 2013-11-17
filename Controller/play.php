@@ -17,7 +17,8 @@ if ($webRadio["nom"]=="Aucune radio active"){
      case "mp3":
          echo Player::play($url." > /dev/null 2>/dev/null &");
          break;
-     case "pls";
+     case "asx":
+     case "pls":
          echo Player::play("-playlist ".$url." > /dev/null 2>/dev/null &");
          break;
      default :

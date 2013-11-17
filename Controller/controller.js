@@ -65,11 +65,11 @@ function getListWebRadio(){
     return tabWebRadio;
 }
 
-function deleteWebRadio(id){
+function deleteWebRadio(name){
     $.ajax({
         type: "POST",               
         url: "../Controller/deleteWebRadio.php",
-        data:"id="+id,
+        data:"name="+name,
         success: function(msg){ 
             if(msg=="1"){
                 refreshListWebRadio();
@@ -89,11 +89,8 @@ function refreshListWebRadio(){
     $("#listViewWebRadio li").remove();
    var tabWebRadio= getListWebRadio();
    // ajout de chaque objet dans la vue
-   for(var i= 0; i < tabWebRadio.length; i++){
-       $("#listViewWebRadio").append("<li><a onClick=\"setRadioActive('"+tabWebRadio[i].id+"')\"><h2>"+tabWebRadio[i].nom+"</h2>\
-                 <a onClick=\"deleteWebRadio("+tabWebRadio[i].id+")\" data-rel=\"popup\" data-position-to=\"window\" data-transition=\"pop\">Supprimer</a>\
-             </li>\
-       ");
+   for(var key in tabWebRadio){
+       $("#listViewWebRadio").append("<li><a onClick=\"setRadioActive('"+key+"')\"></h2>"+key+"</h2></a><a onClick=\"deleteWebRadio('"+key+"')\" data-rel=\"popup\" data-position-to=\"window\" data-transition=\"pop\">Supprimer</a></li>");
    }   
    // rafraichissement de la liste
    $("#listViewWebRadio").listview("refresh");
@@ -164,6 +161,11 @@ function initIndexPage(){
    });
    
    // etat du reveil
+  refreshClockStatus(); 
+}
+
+function refreshClockStatus(){
+
    $.ajax({
         type: 'POST',
         url: 'Controller/getClockStatus.php',
@@ -182,11 +184,12 @@ function initIndexPage(){
            var myselect = $("#select-minute");
            myselect[0].selectedIndex = tab.minute;
            myselect.selectmenu("refresh"); 
-            
+
+           $("#radiocron").html(tab.nom+"<br>"+tab.url);
+	   
            
         }
    });
-   
 }
 
 function addNewRadio(){
@@ -228,8 +231,12 @@ function ActionSelectClock(objet){
         data:'heure='+heure+'&minute='+minute+'&action='+action,
         success: function(msg) {
            message(msg);
+	
+   refreshClockStatus();
         }
    });
+
+   
     
 }
 
